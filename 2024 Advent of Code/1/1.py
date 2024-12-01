@@ -35,5 +35,6 @@ def ch1part2(filename):
         sim_score += i * list2.count(i)
     return sim_score
 
+print("Day 1:")
 print(ch1part1("lists.txt"))
 print(ch1part2("lists.txt"))
