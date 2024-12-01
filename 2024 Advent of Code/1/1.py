@@ -1,6 +1,6 @@
 # Day 1 Challenge - Python
 def ch1part1(filename):
-    # Extract lists from input file.
+    # Extract lists from input file and sort.
     list1 = []
     list2 = []
     list_len = 0
@@ -10,7 +10,6 @@ def ch1part1(filename):
             nums = line.split("   ")
             list1.append(int(nums[0]))
             list2.append(int(nums[1]))
-    # Sort the lists.
     list1.sort()
     list2.sort()
     # Add the absolute difference of the pairs of ordered items.
@@ -19,11 +18,11 @@ def ch1part1(filename):
         diff += abs(list1[i] - list2[i])
     return diff
 
+
 def ch1part2(filename):
     # Extract lists from input file.
     list1 = []
     list2 = []
-    list_len = 0
     with open(filename, "r") as fin:
         for line in fin:
             nums = line.split("   ")
@@ -34,6 +33,7 @@ def ch1part2(filename):
     for i in list1:
         sim_score += i * list2.count(i)
     return sim_score
+
 
 print("Day 1:")
 print(ch1part1("lists.txt"))
