@@ -1,4 +1,5 @@
 def extract_readings(filename):
+    """Extracts list of readings from file."""
     readings = []
     with open(filename, "r") as fin:
         for line in fin:
@@ -11,6 +12,7 @@ def extract_readings(filename):
 
 
 def get_diffs(reading):
+    """Extracts list of differences and returns check."""
     diffs = []
     for i in range(len(reading) - 1):
         diff = reading[i] - reading[i + 1]
@@ -19,6 +21,7 @@ def get_diffs(reading):
 
 
 def check_diffs(diffs):
+    """Checks readings and returns True is safe."""
     pos = []
     neg = []
     # Check diff isn't too big.
@@ -38,6 +41,7 @@ def check_diffs(diffs):
 
 
 def count_true(filename):
+    """Counts safe readings."""
     count = 0
     readings = extract_readings(filename)
     for reading in readings:
@@ -47,6 +51,7 @@ def count_true(filename):
 
 
 def check_with_dampener(reading):
+    """Checks if reading is safe with problem dampener."""
     for i in range(len(reading)):
         new = []
         for j in range(len(reading)):
@@ -59,6 +64,7 @@ def check_with_dampener(reading):
 
 
 def problem_dampener(filename):
+    """Counts safe readings with problem dampener."""
     count = 0
     readings = extract_readings(filename)
     for reading in readings:
