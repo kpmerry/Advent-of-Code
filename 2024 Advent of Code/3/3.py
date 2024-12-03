@@ -1,9 +1,9 @@
 def extract_file_info(filename):
-    strings = []
+    string = ""
     with open(filename, "r") as fin:
         for line in fin:
-            strings.append(line)
-    return strings
+            string += line.strip()
+    return string
 
 
 def find_valid_char(s):
@@ -30,15 +30,15 @@ def find_valid_mul(s):
             product_pairs.append(i)
         else:
             if valid_chars == non_numeric[:3]:
-                diff = len(non_numeric) - len(non_numeric[:3])
-                product_pairs.append(i[:-(diff)])
+                end = i.index(")")
+                product_pairs.append(i[: end + 1])
     return product_pairs
 
 
 def get_products(pairs):
-    product = 1
+    product = 0
     for pair in pairs:
-        nums = (pair[1:-1]).split(",")
+        nums = pair[1:-1].split(",")
         if not nums[0].isnumeric() or not nums[1].isnumeric():
             continue
         else:
@@ -47,13 +47,10 @@ def get_products(pairs):
 
 
 def product_all_lines(filename):
-    product = 1
-    data = extract_file_info(filename)
-    for s in data:
-        s1 = find_valid_char(s)
-        s2 = find_valid_mul(s1)
-        s3 = get_products(s2)
-        product += s3
+    s = extract_file_info(filename)
+    # s1 = find_valid_char(s)
+    s2 = find_valid_mul(s)
+    product = get_products(s2)
     return product
 
 
