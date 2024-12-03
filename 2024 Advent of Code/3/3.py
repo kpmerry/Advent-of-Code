@@ -51,11 +51,12 @@ def enabled_muls(s):
     cut_offs = []
     pairs = []
     for j in range(len(dos)):
+        if not disabled in dos[j]:
+            cut_offs.append(-1)
+            continue
         for i in range(len(dos[j]) - 7):
             if dos[j][i : i + 7] == disabled:
                 cut_offs.append(i)
-        if len(cut_offs) != j + 1:
-            cut_offs.append(-1)
     for k in range(len(dos)):
         res = find_valid_mul(dos[k][: (cut_offs[k])])
         pairs.append(res)
@@ -75,7 +76,7 @@ def product_enabled(filename):
 def main():
     print("Day 3:")
     print(product_all_lines("input.txt"))
-    print(product_enabled("example2.txt"))
+    print(product_enabled("input.txt"))
 
 
 if __name__ == "__main__":
