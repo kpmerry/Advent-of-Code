@@ -9,13 +9,18 @@ def extract_file_info(filename):
 
 def find_valid_mul(s):
     """Find valid instances of multiplying function, return list of pairs."""
+
     product_pairs = []
     mult_operator = "mul"
-    poss_valid_strings = s.split(mult_operator)
     valid_chars = "(,)"
+    poss_valid_strings = s.split(mult_operator)
+
     for i in poss_valid_strings:
+        # Remove empty strings.
         if i == "":
             continue
+
+        # Check the non-numeric characters for a match to valid_chars.
         non_numeric = ""
         for char in i:
             if not char.isnumeric():
@@ -26,14 +31,17 @@ def find_valid_mul(s):
             if valid_chars == non_numeric[:3]:
                 end = i.index(")")
                 product_pairs.append(i[: end + 1])
+
     return product_pairs
 
 
 def get_products(pairs):
     """Get the product of the valid pairs."""
     product = 0
+    # Disregard the the "(,)" characters.
     for pair in pairs:
         nums = pair[1:-1].split(",")
+        # If invalid, don't include in product.
         if not nums[0].isnumeric() or not nums[1].isnumeric():
             continue
         else:
@@ -44,8 +52,8 @@ def get_products(pairs):
 def product_all_lines(filename):
     """Performs part one of the challenge."""
     file_info = extract_file_info(filename)
-    s1 = find_valid_mul(file_info)
-    product = get_products(s1)
+    valid_pairs = find_valid_mul(file_info)
+    product = get_products(valid_pairs)
     return product
 
 
@@ -54,21 +62,25 @@ def enabled_muls(s):
     Removes parts of line where multiplying function is diabled.
     Returns the valid pairs for the enabled parts.
     """
-    enabled = "do()"
-    disabled = "don't()"
-    dos = s.split(enabled)
+    enabler = "do()"
+    disabler = "don't()"
+
+    enabled_strings = s.split(enabler)
     pairs = []
-    for j in range(len(dos)):
+    for j in range(len(enabled_strings)):
+        # If disabler is in the string, store the index as cut_off.
         cut_off = -1
-        if disabled in dos[j]:
-            for i in range(len(dos[j]) - 7):
-                if dos[j][i : i + 7] == disabled:
+        if disabler in enabled_strings[j]:
+            for i in range(len(enabled_strings[j]) - 7):
+                if enabled_strings[j][i : i + len(disabler)] == disabler:
                     cut_off = i
                     break
+        # If disabler is not in the string, use -1 as the cut_off.
         if cut_off == -1:
-            res = find_valid_mul(dos[j])
+            res = find_valid_mul(enabled_strings[j])
         else:
-            res = find_valid_mul(dos[j][:cut_off])
+            # Use string before the cut_off index to find valid pairs.
+            res = find_valid_mul(enabled_strings[j][:cut_off])
         pairs.append(res)
     return pairs
 
