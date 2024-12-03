@@ -1,12 +1,14 @@
 def extract_file_info(filename):
-    string = ""
+    """Extract file information as a string."""
+    file_string = ""
     with open(filename, "r") as fin:
         for line in fin:
-            string += line.strip()
-    return string
+            file_string += line.strip()
+    return file_string
 
 
 def find_valid_mul(s):
+    """Find valid instances of multiplying function, return list of pairs."""
     product_pairs = []
     s_list = s.split("mul")
     valid_chars = "(,)"
@@ -27,6 +29,7 @@ def find_valid_mul(s):
 
 
 def get_products(pairs):
+    """Get the product of the valid pairs."""
     product = 0
     for pair in pairs:
         nums = pair[1:-1].split(",")
@@ -38,6 +41,7 @@ def get_products(pairs):
 
 
 def product_all_lines(filename):
+    """Performs part one of the challenge."""
     s = extract_file_info(filename)
     s1 = find_valid_mul(s)
     product = get_products(s1)
@@ -45,6 +49,10 @@ def product_all_lines(filename):
 
 
 def enabled_muls(s):
+    """
+    Removes parts of line where multiplying function is diabled.
+    Returns the valid pairs for the enabled parts.
+    """
     enabled = "do()"
     disabled = "don't()"
     dos = s.split(enabled)
@@ -65,6 +73,7 @@ def enabled_muls(s):
 
 
 def product_enabled(filename):
+    """Completes part two of the challenge."""
     product = 0
     s = extract_file_info(filename)
     s2 = enabled_muls(s)
@@ -75,6 +84,7 @@ def product_enabled(filename):
 
 
 def main():
+    """Prints the results."""
     print("Day 3:")
     print(product_all_lines("input.txt"))
     print(product_enabled("input.txt"))
