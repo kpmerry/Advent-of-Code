@@ -10,9 +10,10 @@ def extract_file_info(filename):
 def find_valid_mul(s):
     """Find valid instances of multiplying function, return list of pairs."""
     product_pairs = []
-    s_list = s.split("mul")
+    mult_operator = "mul"
+    poss_valid_strings = s.split(mult_operator)
     valid_chars = "(,)"
-    for i in s_list:
+    for i in poss_valid_strings:
         if i == "":
             continue
         non_numeric = ""
@@ -42,8 +43,8 @@ def get_products(pairs):
 
 def product_all_lines(filename):
     """Performs part one of the challenge."""
-    s = extract_file_info(filename)
-    s1 = find_valid_mul(s)
+    file_info = extract_file_info(filename)
+    s1 = find_valid_mul(file_info)
     product = get_products(s1)
     return product
 
@@ -75,9 +76,9 @@ def enabled_muls(s):
 def product_enabled(filename):
     """Completes part two of the challenge."""
     product = 0
-    s = extract_file_info(filename)
-    s2 = enabled_muls(s)
-    for string in s2:
+    file_info = extract_file_info(filename)
+    enabled_pairs = enabled_muls(file_info)
+    for string in enabled_pairs:
         prod = get_products(string)
         product += prod
     return product
