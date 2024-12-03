@@ -48,17 +48,18 @@ def enabled_muls(s):
     enabled = "do()"
     disabled = "don't()"
     dos = s.split(enabled)
-    cut_offs = []
     pairs = []
     for j in range(len(dos)):
-        if not disabled in dos[j]:
-            cut_offs.append(-1)
-            continue
-        for i in range(len(dos[j]) - 7):
-            if dos[j][i : i + 7] == disabled:
-                cut_offs.append(i)
-    for k in range(len(dos)):
-        res = find_valid_mul(dos[k][: (cut_offs[k])])
+        cut_off = -1
+        if disabled in dos[j]:
+            for i in range(len(dos[j]) - 7):
+                if dos[j][i : i + 7] == disabled:
+                    cut_off = i
+                    break
+        if cut_off == -1:
+            res = find_valid_mul(dos[j])
+        else:
+            res = find_valid_mul(dos[j][:cut_off])
         pairs.append(res)
     return pairs
 
