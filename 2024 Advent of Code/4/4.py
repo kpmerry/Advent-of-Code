@@ -8,16 +8,15 @@ def read_file(filename):
 
 def find_words(wordsearch):
 
-    # Where wordsearch is m x n rows x cols
+    # Where wordsearch is m x n rows x cols.
     m = len(wordsearch)
     n = len(wordsearch[0])
 
-    # Conditions: xmas can go across, up/down, diagonally, forwards/backwards.
     # Method: focus on one letter to avoid repeats.
-    # Store the number of words each one appears in.
+    # Count the number of words each one appears in.
 
-    letter = "x"
-    word = "xmas"
+    letter = "X"
+    word = "XMAS"
 
     dirs = [[1, 1], [1, 0], [0, 1], [0, -1], [-1, 0], [-1, -1], [1, -1], [-1, 1]]
     count = 0
@@ -30,14 +29,14 @@ def find_words(wordsearch):
                 word_check = ""
                 try:
                     word_check += wordsearch[i][j]
-                    word_check += wordsearch[i + dir[0]][j + dir[1]]
-                    word_check += wordsearch[i + (2 * dir[0])][j + (2 * dir[1])]
-                    word_check += wordsearch[i + (3 * dir[0])][j + (3 * dir[1])]
-                    if word_check == "xmas" or word_check == "samx":
+                    word_check += wordsearch[i + di[0]][j + di[1]]
+                    word_check += wordsearch[i + (2 * di[0])][j + (2 * di[1])]
+                    word_check += wordsearch[i + (3 * di[0])][j + (3 * di[1])]
+                    if word_check == word or word_check == word[::-1]:
                         count += 1
                 except:
                     continue
-        return count
+    return count
 
 
 def part_one(filename):
