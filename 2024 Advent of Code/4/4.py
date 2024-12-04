@@ -46,8 +46,34 @@ def find_cross(wordsearch):
 
     count = 0
     word = "MAS"
+    letter = "A"
 
-    dirs = [[1, 1], [1, -1], [-1, 1], [-1, -1]]
+    dirs = [[1, 1], [-1, 1]]
+
+    for i in range(n):
+        for j in range(m):
+            local_count = 0
+
+            if wordsearch[i][j] != letter:
+                continue
+            for di in dirs:
+                word_check = ""
+                if (
+                    (i + di[0]) < 0
+                    or (i - di[0]) < 0
+                    or (j + di[1]) < 0
+                    or (j - di[1]) < 0
+                ):
+                    continue
+                try:
+                    word_check += wordsearch[i - di[0]][j - di[1]]
+                    word_check += wordsearch[i][j]
+                    word_check += wordsearch[i + di[0]][j + di[1]]
+                except:
+                    continue
+                if word_check == word or word_check == word[::-1]:
+                    local_count += 1
+            count += local_count // 2
 
     return count
 
@@ -67,7 +93,7 @@ def part_two(filename):
 def main():
     print("Day 4:")
     print(part_one("input.txt"))
-    print(part_two("example.txt"))
+    print(part_two("input.txt"))
 
 
 if __name__ == "__main__":
