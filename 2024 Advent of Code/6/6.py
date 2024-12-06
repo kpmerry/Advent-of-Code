@@ -11,8 +11,8 @@ def part_one(filename):
     guard = "^"
     queue = []
 
-    for i in range(len(env)):
-        for j in range(len(env[0])):
+    for i in range(0, len(env)):
+        for j in range(0, len(env[0])):
             if env[i][j] == guard:
                 queue.append([i, j])  # row, col
 
@@ -23,8 +23,6 @@ def part_one(filename):
 
     while queue:
         current = queue.pop(0)
-        env[current[0]][current[1]] = "X"
-        """
         if (
             current[0] < 0
             or current[0] >= len(env)
@@ -32,7 +30,7 @@ def part_one(filename):
             or current[1] >= len(env)
         ):
             break
-        """
+        env[current[0]][current[1]] = "X"
         try:
             next_cell = [
                 current[0] + dirs[direction][0],
@@ -52,14 +50,20 @@ def part_one(filename):
 
     for a in range(len(env)):
         for b in range(len(env[0])):
-            if env[a][b] == "X" or env[a][b] == "^":
+            if env[a][b] == "X":
                 count += 1
 
     return count
 
 
+def part_two(filename):
+    return None
+
+
 def main():
-    print(part_one("input.txt"))
+    print("Day 6:")
+    print((part_one("input.txt")))
+    print(part_two("example.txt"))
 
 
 if __name__ == "__main__":
