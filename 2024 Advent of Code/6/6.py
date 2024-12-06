@@ -138,6 +138,7 @@ def identify_cycle(env, point):
                 break
 
             if slow == fast:
+                print(point)
                 return True
 
     return False
@@ -175,8 +176,8 @@ def part_two(filename):
 
 def main():
     print("Day 6:")
-    print((part_one("input.txt")))
-    print(part_two("input.txt"))
+    print((part_one("example.txt")))
+    print(part_two("example.txt"))
 
 
 if __name__ == "__main__":
