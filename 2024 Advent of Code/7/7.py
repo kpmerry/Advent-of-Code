@@ -9,7 +9,12 @@ def read_file(filename):
 
 def three_operators_recursive(target, nums, index, value):
 
-    if value == int(target):
+    if value == target:
+        return True
+
+    if target - value in nums:
+        return True
+    if target / value in nums:
         return True
 
     index += 1
@@ -58,9 +63,10 @@ def part_two(filename):
             count += int(key)
             continue
         if three_operators_recursive(
-            key, puzzle_dict[key], 0, int(puzzle_dict[key][0])
+            int(key), puzzle_dict[key], 0, int(puzzle_dict[key][0])
         ):
             count += int(key)
+            continue
 
     return count
 
@@ -72,4 +78,4 @@ def main(filename):
 
 
 if __name__ == "__main__":
-    main("example.txt")
+    main("input.txt")
