@@ -36,5 +36,5 @@ def ch1part2(filename):
 
 
 print("Day 1:")
-print(ch1part1("lists.txt"))
-print(ch1part2("lists.txt"))
+print(ch1part1("input.txt"))
+print(ch1part2("input.txt"))
