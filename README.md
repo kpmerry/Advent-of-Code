@@ -17,6 +17,8 @@ If running, these files should run in Python but each file requires an `input.tx
 - [Day 5: Print Queue](2024%20Advent%20of%20Code/5)
 - [Day 6: Guard Gallivant](2024%20Advent%20of%20Code/6)
     - [ ] Finish Part Two
+- [Day 7: Bridge Repair](2024%20Advent%20of%20Code/7)
+    - [ ] Finish Part Two
 
 ## License
 
