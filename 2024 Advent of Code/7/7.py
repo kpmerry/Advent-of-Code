@@ -7,22 +7,34 @@ def read_file(filename):
     return data
 
 
-def check_true(target, nums):
+def three_operators_recursive(target, nums, index, value):
 
-    target = int(target)
-    root = int(nums[0])
-    stack = [(int(nums[0]), 0)]  # (value, index)
+    if value == int(target):
+        return True
 
-    while stack:
-        value, index = stack.pop(0)
-        if value == target:
-            return True
-        next_index = index + 1
-        if next_index < len(nums):
-            stack.append((value + int(nums[next_index]), next_index))
-            stack.append((value * int(nums[next_index]), next_index))
+    index += 1
+    if index == len(nums):
+        return False
 
-    return False
+    return (
+        three_operators_recursive(target, nums, index, (value) + int(nums[index]))
+        or three_operators_recursive(target, nums, index, (value) * int(nums[index]))
+        or three_operators_recursive(target, nums, index, int(str(value) + nums[index]))
+    )
+
+
+def two_operators_recursive(target, nums, index, value):
+
+    if (value) == int(target):
+        return True
+
+    index += 1
+    if index == len(nums):
+        return False
+
+    return two_operators_recursive(
+        target, nums, index, (value) + int(nums[index])
+    ) or two_operators_recursive(target, nums, index, (value) * int(nums[index]))
 
 
 def part_one(filename):
@@ -30,16 +42,34 @@ def part_one(filename):
     count = 0
 
     for key in puzzle_dict:
-        if check_true(key, puzzle_dict[key]):
+        if two_operators_recursive(key, puzzle_dict[key], 0, int(puzzle_dict[key][0])):
             count += int(key)
 
     return count
 
 
-def main():
+def part_two(filename):
+    puzzle_dict = read_file(filename)
+
+    count = 0
+
+    for key in puzzle_dict:
+        if two_operators_recursive(key, puzzle_dict[key], 0, int(puzzle_dict[key][0])):
+            count += int(key)
+            continue
+        if three_operators_recursive(
+            key, puzzle_dict[key], 0, int(puzzle_dict[key][0])
+        ):
+            count += int(key)
+
+    return count
+
+
+def main(filename):
     print("Day 7:")
-    print(part_one("input.txt"))
+    print(part_one(filename))
+    print(part_two(filename))
 
 
 if __name__ == "__main__":
-    main()
+    main("example.txt")
