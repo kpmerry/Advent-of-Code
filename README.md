@@ -19,7 +19,7 @@ If running, these files should run in Python but each file requires an `input.tx
     - [ ] Finish Part Two
 - [Day 7: Bridge Repair](2024%20Advent%20of%20Code/7)
     - [ ] Finish Part Two
-- Day 8: 
+- [Day 8: Resonant Collinearity](2024%20Advent%20of%20Code/8)
 
 ## License
 
