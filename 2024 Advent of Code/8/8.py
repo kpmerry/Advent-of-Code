@@ -17,8 +17,6 @@ def in_bounds(pair, grid):
     a1 = (x + x_diff, y + y_diff)
     a2 = (a - x_diff, b - y_diff)
 
-    # print(f"The nodes: ({x},{y}) and ({a},{b}) have antinodes {a1} and {a2}.")
-
     m = len(grid)
     n = len(grid[0])
 
@@ -58,9 +56,8 @@ def all_in_bounds(pair, grid):
         a2[0] -= x_diff
         a2[1] -= y_diff
 
-    if in_bounds:
-        in_bounds.add((x, y))
-        in_bounds.add((a, b))
+    in_bounds.add((x, y))
+    in_bounds.add((a, b))
 
     return in_bounds
 
