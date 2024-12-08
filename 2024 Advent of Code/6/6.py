@@ -52,40 +52,48 @@ def is_valid(env, point):
     return True
 
 
-def identify_cycle(env, point):
+def find_cycle(env, point):
+
     if not is_valid(env, point) or env[point[0]][point[1]] == "#":
         return False
-    dirs = [[-1, 0], [0, 1], [1, 0], [0, -1]]
 
-    slow, fast = point, point
+    dirs = [[-1, 0], [0, 1], [1, 0], [0, -1]]
+    count = 0
 
     for i in range(len(dirs)):
-        di_s, di_f = i, i
-        start = point
-        env[start[0]][start[1]] = "#"
+        di = i
+        env[point[0]][point[1]] = "#"
+        start = [point[0] + dirs[di][0], point[1] + dirs[di][1]]
 
-        while is_valid(env, fast):
+        visited = []  # (x coord, y coord, direction)
 
-            next_slow = [slow[0] + dirs[di_s][0], slow[1] + dirs[di_s][1]]
-            if not is_valid(env, next_slow):
+        if not is_valid(env, start):
+            continue
+
+        queue = [start]
+        di = (di - 1) % 4
+
+        while queue:
+            count += 1
+
+            current = queue.pop(0)
+
+            next_cell = [current[0] + dirs[di][0], current[1] + dirs[di][1]]
+            if not is_valid(env, next_cell):
                 break
-            elif env[next_slow[0]][next_slow[1]] == "#":
-                di_s = (di_s + 1) % 4
-                next_slow = [slow[0] + dirs[di_s][0], slow[1] + dirs[di_s][1]]
-            slow = next_slow
 
-            for _ in range(2):
-                next_fast = [fast[0] + dirs[di_f][0], fast[1] + dirs[di_f][1]]
-                if not is_valid(env, next_fast):
-                    break
-                elif env[next_fast[0]][next_fast[1]] == "#":
-                    di_f = (di_f + 1) % 4
-                    next_fast = [fast[0] + dirs[di_f][0], fast[1] + dirs[di_f][1]]
-            fast = next_fast
-
-            if slow == fast:
-                print(point)
+            if (next_cell, di) == (point, i):
                 return True
+
+            elif env[next_cell[0]][next_cell[1]] == "#":
+                if (current[0], current[1], di) not in visited:
+                    visited.append((current[0], current[1], di))
+                else:
+                    return True
+                di = (di + 1) % 4
+                next_cell = [current[0] + dirs[di][0], current[1] + dirs[di][1]]
+
+            queue.append(next_cell)
 
     return False
 
@@ -114,16 +122,17 @@ def part_two(filename):
         for j in range(len(environment[0])):
             if environment[i][j] != "X":
                 continue
-            if identify_cycle([row[:] for row in environment], [i, j]):
+            if find_cycle([row[:] for row in environment], [i, j]):
                 count += 1
+                print(count)
 
     return count
 
 
 def main():
     print("Day 6:")
-    print((part_one("example.txt")))
-    res = part_two("example.txt")
+    print((part_one("input.txt")))
+    res = part_two("input.txt")
     print(res)
 
 
