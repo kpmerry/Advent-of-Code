@@ -58,6 +58,10 @@ def all_in_bounds(pair, grid):
         a2[0] -= x_diff
         a2[1] -= y_diff
 
+    if in_bounds:
+        in_bounds.add((x, y))
+        in_bounds.add((a, b))
+
     return in_bounds
 
 
@@ -122,9 +126,7 @@ def part_two(filename):
     for pair in pairs:
         unique_points.update(all_in_bounds(pair, grid))
 
-    print(unique_points)
-
-    return len(unique_points) + len(pairs)
+    return len(unique_points)
 
 
 def main(filename):
@@ -134,4 +136,4 @@ def main(filename):
 
 
 if __name__ == "__main__":
-    main("example.txt")
+    main("input.txt")
