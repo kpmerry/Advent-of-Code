@@ -5,9 +5,9 @@ See [Advent of Code Website](https://adventofcode.com/ "Advent of Code").
 
 ## Description
 
-My solutions to the adventofcode.com challenge 2024. Each challenge thus far has been written in Python.
+My solutions to the adventofcode.com challenge 2024, written in Python.
 
-If running, these files should run in Python but each file requires an `input.txt` file so ensure that this exists.
+If running, these files should run in Python but each file requires an `input.txt` file. See the Advent of Code website linked above for challenge text and input.
 
 ## 2024
 - [Day 1: Historian Hysteria](2024%20Advent%20of%20Code/1)
@@ -19,6 +19,7 @@ If running, these files should run in Python but each file requires an `input.tx
     - [ ] Finish Part Two
 - [Day 7: Bridge Repair](2024%20Advent%20of%20Code/7)
     - [ ] Finish Part Two
+- Day 8: 
 
 ## License
 
