@@ -92,7 +92,8 @@ def find_cycle(env, point):
                     return True
                 di = (di + 1) % 4
                 next_cell = [current[0] + dirs[di][0], current[1] + dirs[di][1]]
-
+                if env[next_cell[0]][next_cell[1]] == "#":
+                    continue
             queue.append(next_cell)
 
     return False
@@ -124,8 +125,8 @@ def part_two(filename):
                 continue
             if find_cycle([row[:] for row in environment], [i, j]):
                 count += 1
-                print(count)
 
+    count -= 1  # Remove guard starting posiiton
     return count
 
 
