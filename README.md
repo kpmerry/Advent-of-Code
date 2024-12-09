@@ -29,9 +29,10 @@ If running, these files should run in Python but each file requires an `input.tx
 |[Day 3](2024%20Advent%20of%20Code/3)|⭐|⭐|
 |[Day 4](2024%20Advent%20of%20Code/4)|⭐|⭐|
 |[Day 5](2024%20Advent%20of%20Code/5)|⭐|⭐|
-|[Day 6](2024%20Advent%20of%20Code/6)|⭐|    |
-|[Day 7](2024%20Advent%20of%20Code/7)|⭐|    |
+|[Day 6](2024%20Advent%20of%20Code/6)|⭐|   |
+|[Day 7](2024%20Advent%20of%20Code/7)|⭐|   |
 |[Day 8](2024%20Advent%20of%20Code/8)|⭐|⭐|
+|[Day 9](2024%20Advent%20of%20Code/9)|⭐|   |
 
 ## License
 
