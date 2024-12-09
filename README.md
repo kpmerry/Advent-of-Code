@@ -20,6 +20,8 @@ If running, these files should run in Python but each file requires an `input.tx
 - [Day 7: Bridge Repair](2024%20Advent%20of%20Code/7)
     - [ ] Finish Part Two
 - [Day 8: Resonant Collinearity](2024%20Advent%20of%20Code/8)
+- [Day 9: Disk Fragmenter](2024%20Advent%20of%20Code/9)
+    - [ ] Finish Part Two
 
 ## 2024 Stars
 |Day |Part 1|Part 2|
