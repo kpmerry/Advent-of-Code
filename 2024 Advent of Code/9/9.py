@@ -38,9 +38,28 @@ def part_one(filename):
     return count
 
 
+def part_two(filename):
+    data = ""
+
+    with open(filename, "r") as fin:
+        for line in fin:
+            data += line.strip()
+
+    file_system = []
+
+    for i in range(len(data)):
+        if i % 2 == 0:
+            file_system.append(str(i // 2) * int(data[i]))
+        else:
+            file_system.append("." * int(data[i]))
+
+    return file_system
+
+
 def main(filename):
     print(part_one(filename))
+    print(part_two(filename))
 
 
 if __name__ == "__main__":
-    main("input.txt")
+    main("example.txt")
