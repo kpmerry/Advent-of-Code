@@ -25,10 +25,11 @@ def get_adj(point_x, point_y, m, n, env):
 def bfs(m, n, env, start):
     """Search from a given 0 start point for a 9, return unique start/end pairs."""
     x, y = start
+    # Set for unique start/end pairs.
     unique_trails = set()
     # visited = set()
 
-    # BFS.
+    # Perform BFS.
     queue = []
     queue.append(start)
     while queue:
@@ -77,32 +78,27 @@ def part_one(filename):
 def bfs_path(m, n, env, start):
     """Search from a given 0 start point for a 9, return unique start/end pairs."""
     x, y = start
-    unique_trails = []
-    # visited = set()
+    # Using list, can append number of paths found to trails.
+    trails = []
 
-    # BFS.
+    # Perform BFS.
     queue = []
     queue.append(start)
     while queue:
-        # Visit the current.
         cur_x, cur_y = queue.pop(0)
-        # visited.add((cur_x, cur_y))
         cur_val = int(env[cur_x][cur_y])
         # If the current is a 9 add to list and continue until queue empty.
         if env[cur_x][cur_y] == "9":
-            unique_trails.append(((cur_x, cur_y), (x, y)))
+            trails.append(((cur_x, cur_y), (x, y)))
             continue
-
         adjs = []
         for adj_x, adj_y in get_adj(cur_x, cur_y, m, n, env):
-            # Check adjacent hasn't been visited and is correct value.
-            # if (adj_x, adj_y) in visited:
-            #    continue
+            # Check adjacent is correct value.
             if int(env[adj_x][adj_y]) == (cur_val + 1):
                 adjs.append([adj_x, adj_y])
         queue.extend(adjs)
 
-    return len(unique_trails)
+    return len(trails)
 
 
 def part_two(filename):
