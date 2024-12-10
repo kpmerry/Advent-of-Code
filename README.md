@@ -22,6 +22,7 @@ If running, these files should run in Python but each file requires an `input.tx
 - [Day 8: Resonant Collinearity](2024%20Advent%20of%20Code/8)
 - [Day 9: Disk Fragmenter](2024%20Advent%20of%20Code/9)
     - [ ] Finish Part Two
+- [Day 10: Hoof it](2024%20Advent%20of%20Code/10)
 
 ## 2024 Stars
 |Day |Part 1|Part 2|
@@ -35,6 +36,7 @@ If running, these files should run in Python but each file requires an `input.tx
 |[Day 7](2024%20Advent%20of%20Code/7)|⭐|   |
 |[Day 8](2024%20Advent%20of%20Code/8)|⭐|⭐|
 |[Day 9](2024%20Advent%20of%20Code/9)|⭐|   |
+|[Day 10](2024%20Advent%20of%20Code/10)|⭐|⭐|
 
 ## License
 
