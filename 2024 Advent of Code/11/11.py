@@ -23,7 +23,6 @@ def apply_rules(nums, count):
 
 
 def apply_rules_faster(nums_dict, count):
-    # ====== Fix this function ======
     if count == 0:
         return nums_dict
     new_nums_dict = {}
@@ -46,7 +45,7 @@ def apply_rules_faster(nums_dict, count):
             else:
                 new_nums_dict[second_half] = nums_dict[key]
         else:
-            if [key * 2024] in new_nums_dict:
+            if key * 2024 in new_nums_dict:
                 new_nums_dict[key * 2024] += nums_dict[key]
             else:
                 new_nums_dict[key * 2024] = nums_dict[key]
@@ -67,7 +66,7 @@ def part_two(filename):
             stones_dict[number] += 1
         else:
             stones_dict[number] = 1
-    new_stones_dict = apply_rules_faster(stones_dict, 25)
+    new_stones_dict = apply_rules_faster(stones_dict, 75)
     count = 0
     for key in new_stones_dict:
         count += new_stones_dict[key]
@@ -75,8 +74,8 @@ def part_two(filename):
 
 
 def main():
-    print(part_one("example.txt"))
-    print(part_two("example.txt"))
+    print(part_one("input.txt"))
+    print(part_two("input.txt"))
 
 
 if __name__ == "__main__":
