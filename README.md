@@ -24,6 +24,7 @@ If running, these files should run in Python but each file requires an `input.tx
     - [ ] Finish Part Two
 - [Day 10: Hoof it](2024%20Advent%20of%20Code/10)
 - [Day 11: Plutonian Pebbles](2024%20Advent%20of%20Code/11)
+- [Day 12: Garden Groups](2024%20Advent%20of%20Code/12)
 
 ## 2024 Stars
 |Day |Part 1|Part 2|
@@ -39,6 +40,7 @@ If running, these files should run in Python but each file requires an `input.tx
 |[Day 9](2024%20Advent%20of%20Code/9)|⭐|   |
 |[Day 10](2024%20Advent%20of%20Code/10)|⭐|⭐|
 |[Day 11](2024%20Advent%20of%20Code/11)|⭐|⭐|
+|[Day 12](2024%20Advent%20of%20Code/12)|⭐| |
 
 ## License
 
